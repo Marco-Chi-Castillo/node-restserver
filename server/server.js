@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //routes
-app.use(require('./routes/usuarios'));
+app.use(require('./routes/index'));
 
 //Configuracion de MongoDB para la cadenas de conexión de MongoDB y evitar advertencias en consola.
 mongoose.set('useNewUrlParser', true);
