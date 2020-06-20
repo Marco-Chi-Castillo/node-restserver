@@ -96,7 +96,7 @@ app.delete('/usuario/:id', [verificarToken, verificarAdmin_Role], function (req,
   Usuario.findByIdAndUpdate(id, newEstado, { new: true }, (err, userDelete) => {
 
     if (err) {
-      return res.status(400).json({
+      return res.status(500).json({
         ok: false,
         err
       });
