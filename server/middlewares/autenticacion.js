@@ -20,6 +20,25 @@ let verificarToken = (req, res, next) => {
   });
 }
 
+//Verificación de lo tokens
+let verificarTokenImg = (req, res, next) => {
+  let token = req.query.token;
+
+  jwt.verify(token, process.env.SEED, (err, decode) => {
+
+    if (err) {
+      return res.status(401).json({
+        ok: false,
+        err
+      });
+    }
+    req.usuario = decode.usuario;
+    next();
+
+  });
+
+}
+
 
 //Verificacion de roles 
 let verificarAdmin_Role = (req, res, next) => {
@@ -37,4 +56,4 @@ let verificarAdmin_Role = (req, res, next) => {
   }
 };
 
-module.exports = { verificarToken, verificarAdmin_Role }
+module.exports = { verificarToken, verificarAdmin_Role, verificarTokenImg }
